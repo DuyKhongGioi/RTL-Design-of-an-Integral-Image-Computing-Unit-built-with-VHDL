@@ -2,10 +2,11 @@
 ---
 ## **I. Introduction**
 
-In this project, an implementation for the Integral Image function (as well **`integralImage()`** in MatLab).
-The following section demonstrates a visualization of this function:
-Denote I as the input matrix with size 5x5:
-**$$
+This project implements the Integral Image function (similar to the **`integralImage()`** function in MATLAB). 
+
+The following example demonstrates a visualization of this function. Let $I$ be an input matrix with a size of 5x5:
+
+$$
 I = \begin{bmatrix}
 17 & 24 & 1 & 8 & 15\\
 23 & 5 & 7 & 14 & 16\\
@@ -13,12 +14,13 @@ I = \begin{bmatrix}
 10 & 12 & 19 & 21 & 3\\
 11 & 18 & 25 & 2 & 9\\
 \end{bmatrix}
-$$**
+$$
 
-then the output is a 6x6 matrix, which is ***each element is the sum of current element in the input matrix and all previous output elements that have index smaller than current output index***.
+The output $O$ is a 6x6 matrix, where ***each element is the sum of the current element in the input matrix and all previous output elements that have an index smaller than the current output index***.
 
-that is:
-**$$
+That is:
+
+$$
 O = \begin{bmatrix}
 0 & 0 & 0 & 0 & 0 & 0\\
 0 & 17 & 41 & 42 & 50 & 65\\
@@ -27,8 +29,7 @@ O = \begin{bmatrix}
 0 & 54 & 101 & 141 & 204 & 260\\
 0 & 65 & 130 & 195 & 260 & 325\\
 \end{bmatrix}
-$$**
-
+$$
 So to summarize, we have the formula of the **Integral Image** is:
 $$
 Im\_out[r][c] = 0, \text{ r = 0 or c = 0}
