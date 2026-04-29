@@ -30,14 +30,22 @@ O = \begin{bmatrix}
 0 & 65 & 130 & 195 & 260 & 325\\
 \end{bmatrix}
 $$
-So to summarize, we have the formula of the **Integral Image** is:
-$$
-Im\_out[r][c] = 0, \text{ r = 0 or c = 0}
-$$
-$$Im\_out[r][c] = Im\_in[r - 1][c - 1] + Im\_out[r - 1][c] + Im\_out[r][c - 1] - Im\_out[r - 1][c - 1]$$
 
-For example, considers the **Im_out** element at index ``[2][2]``:
-$$Im\_out[2][2] = 5 + 23 + 24 + 17 = 5 +  40 + 41 - 17 = 5 + (17 + 23) + (17 + 24) - (17)$$
+So to summarize, the formula for the **Integral Image** is:
+
+$$
+Im\_out[r][c] = 0, \quad \text{for } r = 0 \text{ or } c = 0
+$$
+
+$$
+Im\_out[r][c] = Im\_in[r - 1][c - 1] + Im\_out[r - 1][c] + Im\_out[r][c - 1] - Im\_out[r - 1][c - 1]
+$$
+
+For example, consider the **Im_out** element at index `[2][2]`:
+
+$$
+Im\_out[2][2] = 5 + 23 + 24 + 17 = 5 + 40 + 41 - 17 = 5 + (17 + 23) + (17 + 24) - 17
+$$
 
 # **II. Design Specification**
 1. **IntegralImage** block can interface with **CPU** so that CPU can configure:
@@ -47,9 +55,6 @@ $$Im\_out[2][2] = 5 + 23 + 24 + 17 = 5 +  40 + 41 - 17 = 5 + (17 + 23) + (17 + 2
 3. After the computing compeleted, **IntegralImage** block imforms the status by sending the `done` signal.
 4. In computing process, **Memory** will send the input pixel by pixel, **CPU** recieves and informs the **IntegralImage** to compute the correspond output pixel, then **CPU** write it to specific memory slot. 
 ![Figure 1: Block Diagram of the design](https://s3.hedgedoc.org/hd1-demo/uploads/a42dbdbd-1a92-429a-86e6-3ed611a23e47.png)
-$$
-\text{Figure 1: Block Diagram of the design}
-$$
 
 ### **I/O Interface Declarations**
 **Bảng 1: Mô tả các tín hiệu vào ra**
@@ -95,7 +100,15 @@ This section demonstrates my design for **IntegralImage** block details above.
     EndFor
 EndFunction
 ```
+### **System Block Diagram**
+![](https://s3.hedgedoc.org/hd1-demo/uploads/5c97f6f9-1d35-4e70-9707-7ebcc492a9e3.png)
+![](https://s3.hedgedoc.org/hd1-demo/uploads/fe47d2af-66c4-48db-98e6-4a5e5ddf8178.png)
+
 ### **Datapath**
 ![](https://s3.hedgedoc.org/hd1-demo/uploads/ec08739b-fbed-41e4-b9aa-0fa798103416.png)
+### **FSMD Diagram**
+![](https://s3.hedgedoc.org/hd1-demo/uploads/4f7068a2-b429-4fca-aa4b-5455feb3c8da.png)
+![](https://s3.hedgedoc.org/hd1-demo/uploads/14284886-875c-4517-8333-2ea4d3531fb1.png)
 
-
+### **Testbench Waveform**
+![](https://s3.hedgedoc.org/hd1-demo/uploads/53294caa-0110-413c-97c4-c25bf006c426.png)
